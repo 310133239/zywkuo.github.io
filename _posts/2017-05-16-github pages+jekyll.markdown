@@ -163,6 +163,7 @@ $ git add .
 $ git commit -a -m "注释信息"
 $ git push origin master
 {% endhighlight %}
+开始的时候我在网上发现之前有一些做法是需要创建一个叫做gh-pages的分支并且在这个分支进行操作，经过我的测试，可能这个适用于之前的版本，目前只需要将代码直接上传到主分支master就可以了。
 
 
 
