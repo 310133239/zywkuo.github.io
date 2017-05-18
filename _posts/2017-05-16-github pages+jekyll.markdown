@@ -165,7 +165,10 @@ $ git push origin master
 {% endhighlight %}
 开始的时候我在网上发现之前有一些做法是需要创建一个叫做gh-pages的分支并且在这个分支进行操作，经过我的测试，可能这个适用于之前的版本，目前只需要将代码直接上传到主分支master就可以了。
 
-
+此时你可以访问网址看看自己的博客了。
+{% highlight ruby %}
+githubname.github.io(不要忘了换成自己的github名字)
+{% endhighlight %}
 
 
 
