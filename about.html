@@ -1,0 +1,92 @@
+---
+layout: page
+title: "About"
+description: "Hey, this is Zyw."
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英文 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+
+
+    <!--copied from markdown -->
+    <blockquote><p>开阔思维，不局限于眼前，<br>
+        需要学习的还有很多。</p></blockquote>
+
+    <p>Hey，我是<strong>周艳伟</strong>，程序员 &amp; web前端，现就职于<a href="http://www.kulv.com" target="_blank">酷旅投资有限公司</a> · <a href="http://www.kulv.com" target="_blank">大数据中心</a>。</p>
+
+    <p>一些作品和开源项目，👉 戳 <a href="https://www.lihaikuo.com" target="_blank">自我介绍</a> 与 <a href="http://github.com/zywkuo" target="_blank">Github</a>
+    
+    <p>代码强迫症患者、生活强迫症患者、all---强迫症患者</p>
+
+    <h5>自我介绍</h5>
+
+    <ul>
+    <li><a href="http://www.lihaikuo.com" target="_blank">自我介绍</a> · 关于我</li>
+    </ul>
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <blockquote><p>Open your mind, not limited to your eyes, <br>
+        There's still a lot to learn </p></blockquote>
+
+    <p>Hey，I am<strong>Zhou Yanwei(周艳伟)</strong>，programmer &amp; Web front end ,Now in office <a href="http://www.kulv.com">Ku Lv Investment Company Limited </a> · <a href="http://www.kulv.com">Big data center </a>。</p>
+
+    <p>Some works and open source projects ——><a href="https://www.lihaikuo.com">Self introduction</a> and <a href="http://github.com/zywkuo">Github</a>
+
+    <p>Code obsessive compulsive disorder、obsessive compulsive disorder、all---compulsive disorder</p>
+
+    <h5>Self introduction</h5>
+
+    <ul>
+        <li><a href="http://www.lihaikuo.com">Self introduction</a> · About me</li>
+    </ul>
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
+
