@@ -9,7 +9,6 @@ navcolor:   "invert"
 header-mask: 0.3
 catalog:    true
 tags:
-    - github博客
     - github pages+jekyll
     - github pages+jekyll
 ---
@@ -169,15 +168,34 @@ $ git push origin master
 {% highlight ruby %}
 githubname.github.io(不要忘了换成自己的github名字)
 {% endhighlight %}
+# 五、绑定自己的域名
+在这里我就介绍如何绑定二级域名，一级域名绑定其实和二级的差不多，更加简单。
+首先找到自己github上新建的那个githuname.github.io的仓库进入到设置页面
+![](/img/2017-05-16/github3.png)
+往下拉找到这个位置在input框里输入域名，blog.lihaikuo.com.一级域名就直接输入lihaikuo.com就可以了
+![](/img/2017-05-16/github4.png)
+你需要在根目录新建一个文件名为CNAME的文件，这个文件不需要添加任何后缀，在文件里写上bolg.lihaikuo.com(顶级域名就写lihaikuo.com)，让后上传到github上githubname.github.io的仓库上
+然后去你购买的域名网站去进行域名解析，我的域名是在百度云上买的，在域名解析页面添加一条这样的解析指令
+{% highlight ruby %}
+添加一个CNAME，主机记录写blog，后面记录值写上你的zywkuo.github.io.
+blog      CNAME    githubname.github.io.（最后面还有一个‘.’不要忘记）
+{% endhighlight %}
+![](/img/2017-05-16/github5.png)
+一级域名主机记录写www就好了。如果不可以，在加上这两条解析就OK了。
+{% highlight ruby %}
+@          A             192.30.252.153
+@          A             192.30.252.154
+{% endhighlight %}
+等上10分钟，访问一下你的网址看看成效吧----->[blog.lihaikuo.com](http://blog.lihaikuo.com/)
+
+注：此篇博客发表时间2017-05-16，随着时间迁移，或许会越来越方便，最近观看的小伙帮肯定没问题，以后有可能会改版，就向我在找资料的时候也走进了很多坑。希望小伙伴们多多注意。
 
 
 
 
 
 
-
-
-
+Finally, thanks for reading
 
 
 

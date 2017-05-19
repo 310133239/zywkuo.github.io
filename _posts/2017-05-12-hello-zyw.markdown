@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Hello Zyw"
-subtitle:   "My Blog"
+subtitle:   "博客搬家，欢迎前来围观"
 date:       2017-05-12
 author:     "zyw"
 header-img: "img/post-bg-nextgen-web-pwa.jpg"
@@ -12,9 +12,6 @@ tags:
 ---
 
 
-> 你好，欢迎来到周艳伟的博客
-
-
-## my blog
+> 之前在新浪写博客，现在搬家都这里，发一个短片的小博客，庆祝我的技术博客搬家。
 
 
