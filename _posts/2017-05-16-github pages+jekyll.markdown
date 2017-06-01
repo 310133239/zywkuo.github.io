@@ -10,7 +10,6 @@ header-mask: 0.3
 catalog:    true
 tags:
     - github pages+jekyll
-    - github pages+jekyll
 ---
 
 # 前言

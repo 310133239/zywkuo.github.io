@@ -7,9 +7,8 @@ author:     "zyw"
 header-img: "img/2017-05-24/post-bg-js-version.jpg"
 navcolor:   "invert"
 header-mask: 0.3
-catalog:    true
+catalog:    false
 tags:
-    - js和jq判断位置
     - js和jq判断位置
 ---
 
@@ -57,4 +56,4 @@ js原生+jquery写法
 偏移坐标top：$(selector)[0].offsetTop
 ```
 
-> 先这么多，持续更新。。。。。。
+> 持续更新。。。。。。

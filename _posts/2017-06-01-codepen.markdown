@@ -1,0 +1,38 @@
+---
+layout:     post
+title:      "codepen"
+subtitle:   "codepen兼容处理(css)"
+date:       2017-06-01
+author:     "zyw"
+header-img: "img/2017-06-01/codepen.png"
+navcolor:   "invert"
+header-mask: 0.3
+catalog:    false
+tags:
+    - codepen兼容
+---
+
+codepen, “代码笔”,前端开发很好用的一个网站，你可以把你的HTML、css、js代码放到上面看效果，也可以在上面直接写代码看结果。
+
+现在的css3的一些特效，像旋转，移动什么的都需要进行兼容性处理，在这里就介绍一下codepen如何进行兼容性处理。
+
+首先打开codepen网址，[www.codepen.io](https://codepen.io/)点击creat新建一个newpen
+![](/img/2017-06-01/newpen.png)
+把css代码粘贴到css框里，然后
+![](/img/2017-06-01/pen1.png)
+![](/img/2017-06-01/pen2.png)
+![](/img/2017-06-01/pen3.png)
+![](/img/2017-06-01/pen4.png)
+这样css代码框里的兼容就处理好了，就可以替换原来的代码了。
+
+看一下兼容前后的效果！
+![](/img/2017-06-01/pen5.png)
+看着很简单，但是一个页面有很多css动画，还有很多个页面，这个兼容就好用多了。
+
+> codepen的实用之处。。。
+
+
+
+
+
+
