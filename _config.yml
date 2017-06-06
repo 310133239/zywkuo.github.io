@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: zyw4231@163.com
 description: "周艳伟的前端博客世界"
 keyword: "周艳伟, 艳伟, zyw, 伟, zhouyanwei, 周艳伟的博客, zyw Blog, 博客, 个人网站, 互联网, 前端, 李海阔, lhk, 李海阔的男朋友"
-url: "https://lihaikuo.com"              # your host, for absolute URL
+url: "https://www.lihaikuo.com"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
