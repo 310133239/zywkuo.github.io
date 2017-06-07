@@ -1,0 +1,217 @@
+---
+layout:     post
+title:      "面向对象（OO）"
+subtitle:   "理解面向对象 OO（object-oriented）"
+date:       2017-06-06
+author:     "zyw"
+header-img: "img/2017-06-06/oo.jpg"
+navcolor:   "invert"
+header-mask: 0.3
+catalog:    true
+tags:
+    - 面向对象
+    - OO
+---
+
+# 什么是面向对象？
+什么是面向对象？–>一切皆对象！！！
+
+什么是对象，不知道这个东西里面长得什么样子，但是知道这个东西有什么功能和方法会用就行了，这就是对象，就像js里面的那些个对象，date呀，数组呀，咱们不知道内部是个什么原理，但是咱们知道它的属性和方法，其实对象就是一个整体，对外提供一些功能和操作，面向对象其实是一种通用思想，可以在编程中用，也可以在生活中用，在编程中呢，如何在使用某些功能来实现效果的过程中可以只关注功能，不关注内部细节的编程思想，就是面向对象就像jq，咱们知道jq可以用$(“.a”)来获取一个jq的dom对象，咱们学习jq不需要去学习jq是怎么去获取dom对象的，只需要学习用jq获取对象的那个操作就ok了，那么jq就是用面向对象编程思想来编写的一个类库。
+
+# 面向对象的特点
+    抽象：抽指把核心的东西抽出来，把与我们要解决的问题有关的东西拿出来摆在面前
+    封装：让使用对象的人不考虑内部实现，只考虑功能使用  把内部的代码保护起来，只留出一些个api接口供用户使用
+    继承：就是为了代码的复用，从父类上继承出一些方法和属性，子类也有自己的一些属性，多重继承继承多种方法和属性
+    多态，对于咱们的js这种弱类型语言来说其实意义不大
+
+# 对象的组成
+    属性   变量：状态、静态的
+    方法   函数：过程、动态的
+
+# 创建对象-基础创建
+最简单的方法就是基础创建
+```javascript
+var obj=new Object();
+obj.name = 'wei';
+obj.age = 6;
+obj.height = 180
+obj.showName = function() {
+   alert(this.name)
+}
+console.log(obj)//Object {name: "wei", age: 6, height: 180, showName: function}
+```
+基础创建缺点：创建一次写一回，如果创建一百次呢，那样就太复杂了，产生了很多重复的代码。
+
+# 创建对象-工厂模式
+工厂模式抽象了创建具体对象的过程，使用函数封装以特定接口创建对象
+```javascript
+function creatPerson (name,age,height){
+    var obj = new Object();
+    obj.name = name;
+    obj.age = age;
+    obj.height = height;
+    obj.showName = function () {
+        alert(this.name)
+    }
+    return obj;
+}
+var person1 = creatPerson("wei",6,"180");
+var person2 = creatPerson("kuo",8,"160");
+console.log(person1)//Object {name: "wei", age: 6, height: "180", showName: function}
+console.log(person2)//Object {name: "kuo", age: 8, height: "160", showName: function}
+
+console.log(person1.showName)//function () { alert(this.name) }
+console.log(person2.showName)//function () { alert(this.name) }
+
+上面都没有问题，在看下面这个
+console.log(person1.showName==person2.showName)//false
+这里是不一样的，这样的话创建一百个对象就会出现一百种方法岂不是很浪费内存。
+```
+工厂模式的缺点：方法不一样浪费内存，也不知道对象的类型，还有就是感觉创建对象没有使用new感觉很不爽啊。
+
+# 创建对象-构造函数模式
+构造函数与其他函数的区别就是调用方式不同，单是构造函数也是函数，不存在其他语法。
+
+`任何函数只要通过new操作符来调用，那就可以作为构造函数`
+```javascript
+function Person (name,age,height){
+    this.name = name;
+    this.age = age;
+    this.height = height;
+    this.showName = function () {
+        alert(this.name)
+    }
+}
+var person1 = new Person("wei",6,"180");
+var person2 = new Person("kuo",8,"160");
+console.log(person1)//Person {name: "wei", age: 6, height: "180", showName: function}
+console.log(person2)//Person {name: "kuo", age: 8, height: "160", showName: function}
+但是
+console.log(person1.showName==person2.showName)false
+还是false,说明这个问题和上面的一样了，但是代码变少了。
+```
+我们来比较一下工厂模式和构造函数的不同之处。
+```javascript
+1.没有明确的创建对象；
+2.直接将属性和方法赋值给了this对象；
+3.没有return语句了；
+*在这里要主意一点：构造函数应该以一个大写字母开头可以和其他函数区分开
+```
+要创建Person的心实例，必须使用new操作符。这种方式调用构造函数会经历以下4步。
+```javascript
+1.创建一个新对象；
+2.将构造函数的作用域赋给新对象（this就指向了这个对象）；
+3.执行构造函数中的代码（为这个性对象添加属性）；
+4.返回新对象；
+```
+person1和person2分别保存着Person的一个不同的实例，这两个对象都有一个constructor(构造属性)
+```javascript
+console.log(person1.constructor == Person)//true
+console.log(person2.constructor == Person)//true
+```
+再用instanceof检测一下类型
+```javascript
+console.log(person1 instanceof Object)//true
+console.log(person1 instanceof Person)//true
+console.log(person2 instanceof Object)//true
+console.log(person2 instanceof Person)//true
+```
+例子中创建的所有对象即是Obect的实例，也是Person的实例。
+
+构造函数的缺点：每个方法都要在每个实例上重新创建一遍，浪费内存。
+
+# 创建对象-原型模式
+我们创建的每个函数都有一个prototype(原型)属性，这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有势力共享的属性和方法。是不是很深奥
+
+`简化一下`propotype就是通过调用构造函数而创建的那个对象实例的原型对象，使用原型对象好处是可以让所有对象实例共享他所包含的属性和方法。
+
+`在简单点`比如一个页面有10个div，我想把他们背景都变成红色，怎么办，给每一个div都加上内联样式style=”background:red;”,麻烦不麻烦，这样我们起一个class名.red{ background:red;}给每一个div都加上.red的class名就好了，原型就相当于类名，这样理解起来就好理解了。
+```javascript
+function Person(){
+}
+Person.prototype.name = "wei";
+Person.prototype.age = 6;
+Person.prototype.height = 180;
+Person.prototype.showName = function () {
+    alert(this.name);
+}
+var person1 = new Person();
+person1.showName();//wei
+var person2 = new Person();
+person2.showName();//wei
+console.log(person1.showName == person2.showName)//true
+```
+也可以简化为这样
+```javascript
+function Person(){
+}
+Person.prototype = {
+    name : "wei",
+    age : 6,
+    height : 180,
+    showName : function () {
+        alert(this.name);
+    }
+}
+var person1 = new Person();
+person1.showName();//wei
+var person2 = new Person();
+person2.showName();//wei
+console.log(person1.showName == person2.showName)//true
+```
+再来看一个例子
+```javascript
+function Person(){
+}
+Person.prototype = {
+    name : "wei",
+    age : 6,
+    height : 180,
+    friends : ["xiao","zhang"],
+    showName : function () {
+        alert(this.name);
+    }
+}
+var person1 = new Person();
+var person2 = new Person();
+person1.friends.push("meng")
+console.log(person1.friends)//["xiao", "zhang", "meng"]
+console.log(person2.friends)//["xiao", "zhang", "meng"]
+console.log(person1.showName === person2.showName)//true
+```
+一下就看出问题来了吧，我想改的改了，不想改的也给我改了。
+
+原型模式的缺点：太共享了，没有自己的隐私。
+
+# 创建对象-混合模式
+混合模式就是将构造函数模式和原型模式组合起来一起使用，这种自定义类型是ECMAscript中使用最广泛的、认同度最高的。
+
+`构造函数模式用于定义实例属性，原型模式用于定义方法和公共的属性。`
+再来看一个例子
+```javascript
+function Person (name, age, height) {
+    this.name = name;
+    this.age = age;
+    this.height = height;
+    this.friends = ["xiao", "zhang"];
+}
+Person.prototype = {
+    showName : function () {
+        alert(this.name)
+    }
+}
+var person1 = new Person("wei", 6, 180)
+var person2 = new Person("kuo", 8, 160)
+
+person1.friends.push("meng")
+console.log(person1.friends)//["xiao", "zhang", "meng"]
+console.log(person2.friends)//["xiao", "zhang"]
+console.log(person1.friends === person2.friends)//false
+console.log(person1.showName === person2.showName)//true
+```
+混合模式每个实例都会有自己的一份实例属性的副本，但同时游共享着对方的引用，最大限度的节省了内存，混合模式还支持向构造函数传递参数，集合了两种模式的优点。
+
+
+
+
+
